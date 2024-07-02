@@ -3,7 +3,6 @@ package com.example.myapi.demo.controller;
 import com.example.myapi.demo.model.Reservation;
 import com.example.myapi.demo.service.ReservationService;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,6 +15,7 @@ public class ReservationController {
     public ReservationController() throws SQLException {
     }
 
+    //reservations?date={date}
     @GetMapping
     public List<Reservation> getReservationsList (@RequestParam String date) throws SQLException {
         return reservationService.getReservationsList(date);
@@ -60,6 +60,12 @@ public class ReservationController {
     public Reservation updateReservation(@PathVariable long id, @RequestBody Reservation reservation) throws SQLException {
         return reservationService.updateReservation(id, reservation);
     }
+
+    @GetMapping("/count")
+    public int getReservationCount () throws SQLException {
+        return reservationService.getReservationCount();
+    }
+
 
 
 }

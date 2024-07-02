@@ -45,4 +45,9 @@ public class ReservationService {
         return (dbRepository.updateReservation(id, reservation) == null) ? dbRepository.addReservation(reservation) : reservation;
     }
 
+    public int getReservationCount () throws SQLException {
+        return dbRepository.getReservationCount();
+    }
+
+
 }

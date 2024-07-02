@@ -41,4 +41,9 @@ public class ClientController {
         return clientService.getClientsCount();
     }
 
+    @GetMapping("/search/{name}")
+    public List<Client> getCLientByName(@PathVariable String name) throws SQLException {
+        return clientService.getCLientByName(name);
+    }
+
 }

@@ -85,6 +85,33 @@ public class DatabaseRepository {
         return rowsCount;
     }
 
+    public long getCLientIdByName(String lookingName) throws SQLException {
+        String sql = "SELECT * FROM clients WHERE name = ?";
+        PreparedStatement statement = _connection.prepareStatement(sql);
+        statement.setString(1, lookingName);
+        ResultSet resultSet = statement.executeQuery();
+        boolean hasResults = resultSet.next();
+        if(!hasResults) return 0;
+        return resultSet.getInt("client_id");
+    }
+
+    public List<Client> getCLientByName(String lookingName) throws SQLException {
+        clientList = new ArrayList<>();
+        String sql = "SELECT * FROM clients WHERE name = ?";
+        PreparedStatement statement = _connection.prepareStatement(sql);
+        statement.setString(1, lookingName);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            long id = resultSet.getInt("client_id");
+            String name = resultSet.getString("name");
+            String email = resultSet.getString("email");
+            String phone = resultSet.getString("phone");
+            clientList.add(new Client(id, name, email, phone));
+        }
+        return clientList;
+    }
+
+
     //------------RESERVATIONS----------------------
 
     public List<Reservation> getReservationsList() throws SQLException {
@@ -207,5 +234,15 @@ public class DatabaseRepository {
         if (rowsInserted > 0) return reservation;
         return null;
     }
+
+    public int getReservationCount() throws SQLException {
+        int rowsCount = 0;
+        String sql = "SELECT COUNT(*) AS rows_count FROM reservations";
+        PreparedStatement statement = _connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) rowsCount = resultSet.getInt("rows_count");
+        return rowsCount;
+    }
+
 
 }

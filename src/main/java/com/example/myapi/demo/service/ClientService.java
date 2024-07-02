@@ -32,4 +32,8 @@ public class ClientService {
         return dbRepository.getClientsCount();
     }
 
+    public List<Client> getCLientByName(String name) throws SQLException {
+        return dbRepository.getCLientByName(name);
+    }
+
 }
