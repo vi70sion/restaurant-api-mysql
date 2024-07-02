@@ -3,13 +3,21 @@ Restorano rezervacijų valdymo sistema
 Jums reikia sukurti API, kuri valdys restorano rezervacijų sistemą. Projektas turi būti realizuotas naudojant Java, Spring Boot karkasą ir duomenų bazę. Jūsų API turėtų leisti atlikti šias operacijas:
 
 Pridėti naują klientą
+
 Pridėti naują rezervaciją
+
 Gauti visų rezervacijų sąrašą
+
 Gauti visų rezervacijų sąrašą pagal nurodytą datą
+
 Gauti visas patvirtintas rezervacijas
+
 Gauti visas atšauktas rezervacijas
+
 Ieškoti rezervacijų pagal kliento ID
+
 Atšaukti rezervaciją pagal rezervacijos ID
+
 Patvirtinti rezervaciją
 
 Reikalavimai:
@@ -19,12 +27,14 @@ Duomenų bazė:
 Lentelės: clients ir reservations.
 
 Klientų lentelė (clients):
+
 id: unikalus identifikatorius (ilgasis sveikasis skaičius)
 name: kliento vardas (tekstinis laukas)
 email: kliento el. paštas (tekstinis laukas)
 phone: kliento telefono numeris (tekstinis laukas)
 
 Rezervacijų lentelė (reservations):
+
 id: unikalus identifikatorius (ilgasis sveikasis skaičius)
 client_id: kliento ID (ilgasis sveikasis skaičius, svetimosios raktas į clients lentelę)
 reservation_date: rezervacijos data ir laikas (laiko žymė)
